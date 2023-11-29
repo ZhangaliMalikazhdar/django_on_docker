@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Sanction, Organization
+
+
+def list_excel(request):
+    return render(request, 'list.html')
