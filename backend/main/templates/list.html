@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Banks with Sancs</title>
 </head>
 <body>
+<h1 class="text-center">List Organizations</h1>
+<div class="list-group">
+    {% for i in orgs %}
+        <div class="list-group-item ml-2 bg-secondary mb-1 w-25 text-white"
+             data-toggle="collapse"
+             data-target="#details{{ forloop.counter }}"
+        >
+            {{ i.name }}
+        </div>
 
+        <div id="details{{ forloop.counter }}" class="collapse ml-3">
+            <div><b>Наименование: </b>{{ i.first_owner }}</div>
+            <div><b>Совет директоров: </b>{{ i.board_of_directors }}</div>
+            <div><b>Председатель Правления: </b>{{ i.chairman_of_the_board }}</div>
+            <div><b>Члены Правления: </b>{{ i.members_of_the_board }}</div>
+            <div><b>Директор: </b>{{ i.director }}</div>
+            <div><b>Главный бухгалтер: </b>{{ i.chief_accountant }}</div>
+            <div><b>БИН: </b>{{ i.BIN }}</div>
+            <div><b>Адрес (город, улица, дом, квартира): </b>{{ i.address }}</div>
+            <div><b>Телефон: </b>{{ i.number }}</div>
+            <div><b>E-mail: </b>{{ i.mail }}</div>
+            <div><b>Web-сайт: </b>{{ i.site }}</div>
+            <div><b>Лицензия: </b>{{ i.license }}</div>
+            <div><b>Филиалы: </b>{{ i.branches }}</div>
+            <div>
+                <a href="{% url 'sanction' i.pk %}"><div class="btn btn-primary">Санкции</div></a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

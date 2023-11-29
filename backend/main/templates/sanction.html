@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .list-group-item:nth-child(odd) {
+            background-color: #f8f9fa;
+        }
+
+        .list-group-item:nth-child(even) {
+            background-color: #e9ecef;
+        }
+    </style>
+    </style>
+    <title>Sanction</title>
+</head>
+<body>
+<a href="{% url 'all' %}"><div class="btn btn-primary mt-2 ml-2">Main Page</div></a>
+{% if sancs %}
+<h2 class="text-center">{{sancs.0}}</h2>
+{% for i in sancs %}
+    <div class="list-group-item">
+        <div><b>Тип организации: </b>{{ i.type }}</div>
+        <div><b>Дата решения уполномоченного органа: </b>{{ i.date }}</div>
+        <div><b>Номер принятия решения/дела: </b>{{ i.decision_number }}</div>
+        <div><b>Вид взыскания: </b>{{ i.type_of_recovery }}</div>
+        <div><b>Тип взыскания: </b>{{ i.type_of_penalty }}</div>
+        <div><b>Наложенное взыскание: </b>{{ i.imposed_penalty }}</div>
+        <div><b>Существо нарушения: </b>{{ i.essence_of_violation }}</div>
+        <div><b>Срок исполнения: </b>{{ i.period_of_execution }}</div>
+        <div><b>Статья/пункты НПА, Статья КоАП: </b>{{ i.article }}</div>
+        <div><b>Примечание: </b>{{ i.note }}</div>
+        <div><b>Тип НПА: </b>{{ i.type_npa }}</div>
+        <div><b>Наименование департамента АРРФР / УРП: </b>{{ i.department_name }}</div>
+    </div>
+{% endfor %}
+{% else %}
+<h2>Sanctions are absent</h2>
+{% endif %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
